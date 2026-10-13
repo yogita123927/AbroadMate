@@ -1,0 +1,13 @@
+{
+  "name": "abroadmate",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix Backend\" \"npm run dev --prefix Frontend\"",
+    "build": "npm run build --prefix Frontend",
+    "start": "npm start --prefix Backend",
+    "seed": "npm run seed --prefix Backend"
+  },
+  "devDependencies": { "concurrently": "^9.1.2" }
+}
