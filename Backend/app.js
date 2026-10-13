@@ -10,10 +10,18 @@ import shortlistRoutes from './routes/shortlist.js';
 import preferenceRoutes from './routes/preferences.js';
 import recommendationRoutes from './routes/recommendations.js';
 import { notFound, errorHandler } from './middleware/errors.js';
+import cors from 'cors';
 
 const app = express();
 
 app.disable('x-powered-by');
+
+// Allow requests from the deployed Netlify frontend
+app.use(cors({
+  origin: 'https://abroadmate.netlify.app',
+  credentials: true
+}));
+
 
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json({ limit: '100kb' }));
