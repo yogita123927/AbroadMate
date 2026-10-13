@@ -11,7 +11,14 @@ export function requireAuth(req, res, next) {
     return res.status(401).json({ message: 'Your session expired. Please sign in again.' });
   }
 }
+
 export function cookieOptions() {
-  const secure = process.env.COOKIE_SECURE === 'true' || process.env.NODE_ENV === 'production';
-  return { httpOnly: true, secure, sameSite: 'lax', path: '/', maxAge: 7 * 24 * 60 * 60 * 1000 };
+  return {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+    path: '/',
+    maxAge: 7 * 24 * 60 * 60 * 1000
+  };
 }
+
